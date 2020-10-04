@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: rgb(255,255,255);
+    background: -moz-radial-gradient(circle, rgba(255,255,255,1) 60%, rgba(186,130,63,0.44861694677871145) 100%);
+    background: -webkit-radial-gradient(circle, rgba(255,255,255,1) 60%, rgba(186,130,63,0.44861694677871145) 100%);
+    background: radial-gradient(circle, rgba(255,255,255,1) 60%, rgba(186,130,63,0.44861694677871145) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ba823f",GradientType=1);
+    font-family: 'Roboto', 'sans-serif';
+    max-width: 900px;
+}
+
+/* Header */
+
+header {
+    background-image: url(../img/fallout-img.jpg);
+    background-size: 125%;
+    background-position-x: -30px;
+    background-position-y: -30px;
+    height: 520px;
+}
+
+header h1 {
+    padding-top: 100px;
+    padding-left: 60px;
+    margin: 0;
+    font-size: 80px;
+    color: white;
+    letter-spacing: 0.01em;
+}
+
+header h1 span {
+    font-style: italic;
+    font-weight: 100;
+    color: rgb(255, 174, 0);
+}
+
+.rotate {
+    margin-top: 15px;
+    background-color: orange;
+    margin-left: 60px;
+    width: 60px;
+    height: 212px;
+    float: left;
+}
+.rotate p {
+    margin: 0;
+    font-family: Roboto;
+    color: white;
+    font-weight: 600;
+    font-size: 36px;
+    width: 233px;
+    height: 214px;
+    transform: rotate(270deg);
+    text-align: center;
+}
+
+
+.text_header {
+    padding-top: 30px;
+    padding-left: 150px;
+    width: 300px;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 36px;
+    color: white;
+    letter-spacing: 0.025em;
+}
+
+
+/* Section */
+
+li {
+    list-style: none;
+}
+
+li::before {
+    content: "•";
+    height: 1px;
+    padding-bottom: 10px;
+    padding-right: 40px;
+    float: left;
+    font-size: 36px;
+    margin-top: -10px;
+}
+
+h2 {
+    padding: 25px 0;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+p {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: justify;
+}
+li p {
+    line-height: 24px;
+    text-align: none;
+}
+span {
+    font-weight: 600;
+    font-style: italic;
+}
+
+p span:last-child {
+    color: rgb(255, 199, 44);
+}
+
+li p .black {
+    color: black;
+}
+
+
+.barre_jaune {
+    margin: 50px 0 0 110px;
+    width: 9px;
+    height: 365px;
+    background-color: rgb(255, 199, 44);
+    border-radius: 2px;
+    float: left;
+}
+
+.container {
+    padding: 50px 120px 100px 170px;
+}
+
+
+
+
+
+
+footer {
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(43,43,43,1) 100%);
+    height: 200px;
+}
+
+footer img {
+    position: relative;
+    top: -75px;
+    width: 20%;
+    padding-right: 70px;
+    padding-left: 60px;
+}
+footer img:last-child {
+    padding-right: 0;
+    padding-left: 55px;
+}
+
+footer p {
+    position: relative;
+    top: -140px;
+    display: inline;
+    color: white;
+    padding-right: 200px;
+}
+.inImg {
+    font-weight: 600;
+    color: rgb(51, 51, 51);
+    position: relative;
+    top: -222px;
+    left: 702px;
+    width: 148px;
+}
+.inImg p {
+    text-align: center;
+    position: relative;
+    top: 0;
+    display: block;
+    color: rgb(51, 51, 51);
+    padding-right: 0;
+    font-size: 22px;
+    font-weight: 600;
+    font-style: italic;
+}
+.inImg p span {
+    color: rgb(51, 51, 51);
+    font-weight: 300;
+}
+
+.inImg p span span {
+    font-size: 20px;
+}
+.inImg p span span:last-child {
+    font-weight: 600;
+}
