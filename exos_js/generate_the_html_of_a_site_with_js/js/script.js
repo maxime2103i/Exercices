@@ -1,6 +1,6 @@
 let body = document.querySelector('body');
 
-
+console.log(body);
 
 const createElemet = (attributObjetc) => {
 
