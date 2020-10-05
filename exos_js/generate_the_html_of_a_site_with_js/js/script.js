@@ -3,15 +3,29 @@ let body = document.querySelector('body');
 
 
 const createElemet = (attributObjetc) => {
+
+    // je déclare un element 
     let element;    
 
     if (attributObjetc['tagName']) {
+
+        // je vérifie si l'objet est n'est pas vide
+
         for (const key in attributObjetc) {
+
+            // je fais une boucle dans l'objet contenant les attribues
+
             if (key === "tagName") {
+
+                // si l'attribue est tagName alors on creer l'element avec comme tag le contenue de tagName
                 element = document.createElement(attributObjetc.tagName);
             } else if (key === "innerHTML") {
+
+                // si l'attribue est innerHTML alors on incrémente l'element avec le contenue de innerHTML
                 element.innerHTML += attributObjetc[key];
             } else if (key === "innerTEXT") {
+
+                // si l'attribue est innerTEXT alors on fait une boucle qui incrémente l'element avec ou un objet ou une string
                 attributObjetc[key].forEach(textOrObj => {
                     if (typeof textOrObj === "object") {
                         element.appendChild(createElemet(textOrObj));
@@ -20,20 +34,24 @@ const createElemet = (attributObjetc) => {
                     };
                 });
             } else if (key === "childs") {
+
+                // si l'attribue est un childs alors pour tt les childs on va appeler cette même fonction pour créer un element enfant
                 for (const keychild in attributObjetc[key]) {
                     element.appendChild(createElemet(attributObjetc[key][keychild]));
                 };
             } else {
+
+                // si tout ca n'est pas respecter nous incrémentons objets d'un attribue et d'un contenue d'attribue 
                 element.setAttribute(key, attributObjetc[key]);
-            };
+            };  
+
         };
     } else {
-        console.log(false);
+        console.log("error object empty");
         return false;
     };
     return element;
 };
-
 
 
 const divContainer = {
