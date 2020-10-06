@@ -1,49 +1,62 @@
-let tagsAllowed = ['id', 'class', 'role', 'innerText', 'innerHTML', 'data-ga-category', 'data-ga-action', 'data-ga-label', 'href'];
+
 let detectNumberOfAttributes = document.querySelectorAll('attribute').length;
-function insertTags(tagToInsert, attributesObject, nodeToApply, numberOfClones) {
-  let newTag = document.createElement(tagToInsert);
-  for (i = 0; i < Object.keys(attributesObject).length; i++) {
-    if (!tagsAllowed.includes(Object.keys(attributesObject)[i])) {
-      return false;
-    }
-  }
-  
-  for (attribute in attributesObject) {
-    if (attribute === 'innerHTML' || attribute === 'innerText') {
-      if (attribute === 'innerHTML') {
-        newTag.innerHTML = attributesObject['innerHTML'];
-      }
-      if (attribute === 'innerText') {
-        newTag.innerText = attributesObject['innerText'];
-      }
+
+const createElemet = (attributObjetc) => {
+    let element;    
+
+    if (attributObjetc['tagName']) {
+        for (const key in attributObjetc) {
+            if (key === "tagName") {
+                element = document.createElement(attributObjetc.tagName);
+            } else if (key === "innerHTML") {
+                element.innerHTML += attributObjetc[key];
+            } else if (key === "innerTEXT") {
+                attributObjetc[key].forEach(textOrObj => {
+                    if (typeof textOrObj === "object") {
+                        element.appendChild(createElemet(textOrObj));
+                    } else {
+                        element.innerHTML += textOrObj;
+                    };
+                });
+            } else if (key === "childs") {
+                for (const keychild in attributObjetc[key]) {
+                    element.appendChild(createElemet(attributObjetc[key][keychild]));
+                };
+            } else if (key === "clone") {
+                
+            } else {
+                element.setAttribute(key, attributObjetc[key]);
+            };
+        };
     } else {
-      newTag.setAttribute(attribute, attributesObject[attribute]);
-    }
-  }
-  for (let i = 0; i < numberOfClones; i++) {
-    let clonedNode = newTag.cloneNode(true);
-    nodeToApply.appendChild(clonedNode);
-  }
-}
+        console.log(false);
+        return false;
+    };
+    return element;
+};
+
+
 
 
 const addAttribute = () => {
-  detectNumberOfAttributes++;
-  insertTags('div', {
-    class: 'attribute'+detectNumberOfAttributes,
-    'innerHTML': 
-    '<p>Attribut</p><input name="attribute'+detectNumberOfAttributes+'" type="text"><p>Valeur de l\'attribut</p><input name="value'+detectNumberOfAttributes+'" type="text">'
-  }, document.querySelector('#attributes'), 1);
+    detectNumberOfAttributes++;
+    createElemet({
+        'tagName': 'div', 
+        'class': 'attribute' + detectNumberOfAttributes,
+        'innerHTML': '<p>Attribut</p><input name="attribute' + detectNumberOfAttributes + '" type="text"><p>Valeur de l\'attribut</p><input name="value' + detectNumberOfAttributes + '" type="text">',
+        
+        document.querySelector('#attributes')
+    }
 }
 
 const removeAttribute = () => {
-  document.querySelector('#attributes').removeChild(document.querySelector('.attribute'+detectNumberOfAttributes));
-  detectNumberOfAttributes--;
+    document.querySelector('#attributes').removeChild(document.querySelector('.attribute' + detectNumberOfAttributes));
+    detectNumberOfAttributes--;
 }
 
 
 // const tagSubmitted = () =>  {
-  
+
 // }
 
 
@@ -51,3 +64,7 @@ addAttribute();
 addAttribute();
 addAttribute();
 removeAttribute();
+
+
+
+// ElemzntHTML.closest()

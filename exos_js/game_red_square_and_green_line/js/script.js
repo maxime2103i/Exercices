@@ -16,7 +16,6 @@ let x = 0;
 let y = 0;
 
 
-
 body.addEventListener('keydown', (event) => {
 
     if (game) {
