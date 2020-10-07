@@ -8,6 +8,9 @@ for (let i = 0; i < mot_a_verif.length; i++) {
 
 
 let mot = document.querySelector('.mot')
+let div_key_pressed = document.querySelector('.key_pressed')
+
+mot.innerHTML = mot_vide.join(" ")
 
 let x = 0;
 let game = true;
@@ -17,6 +20,7 @@ const testkey = (key) => {
     if (game) {
         if (key_pressed.indexOf(key) === -1) {
             if (key.match(/^[a-zA-Z]+$/) && key.length <= 1) {
+                div_key_pressed.innerHTML += `${key}, `
                 var indices = [];
                 key_pressed.push(key)
 
@@ -33,8 +37,8 @@ const testkey = (key) => {
                     });
                 }
 
-                mot.innerHTML = mot_vide.join('')
-                
+                mot.innerHTML = mot_vide.join(' ')
+
                 if (x === 9) {
                     game = false
                     mot.innerHTML += " Défaite"

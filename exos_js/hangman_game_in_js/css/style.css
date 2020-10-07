@@ -2,10 +2,28 @@
     margin: 0px;
     padding: 0;
 }
-div {
+.container_corp {
+    width: 425px;
+    height: 450px;
+    float: left;
+}
+
+.corp {
     position: relative;
     margin-left: 100px;
 }
+
+.key_pressed {
+    padding-top: 200px;
+    float: left;
+}
+
+.mot {
+    float: right;
+    padding-top: 200px;
+    padding-right: 100px;
+}
+
 .poutre-droite {
     border-left: 2px solid #000;
     display: inline-block;
