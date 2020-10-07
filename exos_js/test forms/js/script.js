@@ -1,8 +1,7 @@
-
 let detectNumberOfAttributes = document.querySelectorAll('attribute').length;
 
 const createElemet = (attributObjetc) => {
-    let element;    
+    let element;
 
     if (attributObjetc['tagName']) {
         for (const key in attributObjetc) {
@@ -23,7 +22,7 @@ const createElemet = (attributObjetc) => {
                     element.appendChild(createElemet(attributObjetc[key][keychild]));
                 };
             } else if (key === "clone") {
-                
+
             } else {
                 element.setAttribute(key, attributObjetc[key]);
             };
@@ -39,14 +38,11 @@ const createElemet = (attributObjetc) => {
 
 
 const addAttribute = () => {
-    detectNumberOfAttributes++;
     createElemet({
-        'tagName': 'div', 
+        'tagName': 'div',
         'class': 'attribute' + detectNumberOfAttributes,
-        'innerHTML': '<p>Attribut</p><input name="attribute' + detectNumberOfAttributes + '" type="text"><p>Valeur de l\'attribut</p><input name="value' + detectNumberOfAttributes + '" type="text">',
-        
-        document.querySelector('#attributes')
-    }
+        'innerHTML': `<p>Attribut</p><input name="attribute${detectNumberOfAttributes}" type="text"><p>Valeur de l'attribut</p><input name="value${detectNumberOfAttributes}" type="text">`
+    })
 }
 
 const removeAttribute = () => {
@@ -55,15 +51,17 @@ const removeAttribute = () => {
 }
 
 
+// https://stackoverflow.com/questions/41424994/how-to-add-a-div-between-two-divs-by-javascript
+
 // const tagSubmitted = () =>  {
 
 // }
 
 
-addAttribute();
-addAttribute();
-addAttribute();
-removeAttribute();
+// addAttribute();
+// addAttribute();
+// addAttribute();
+// removeAttribute();
 
 
 
