@@ -62,10 +62,54 @@ const removeAttribute = () => {
 // addAttribute();
 // addAttribute();
 // removeAttribute();
-
-
-
 // ElemzntHTML.closest()
+
+
+
+
+
+
+
+
+
+
+let submit = document.querySelector('#submit')
+
+let inputTag = document.querySelector('#tag_name')
+let mot = []
+
+inputTag.addEventListener('input', (event) => {
+    if (event.data != null) {
+        mot.push(event.data)
+    } else {
+        mot.splice(mot.lastIndexOf(), 1)
+    }
+    console.log(mot.join(""));
+    if (mot.join('') === 'a') {
+        console.log('oui');
+    }
+})
+
+
+
+submit.addEventListener('click', (event) => {
+    let inputTagName = document.querySelectorAll('input')
+    let arrayData = []
+    inputTagName.forEach(element => {
+        arrayData.push(element.value)
+        inputTagName.value = ""
+    });
+    let textarea = document.querySelectorAll('textarea')
+    let select = document.querySelector('select')
+    
+
+    console.log(arrayData);
+    event.preventDefault();
+})
+
+
+
+
 let x = 0;
 let more = document.querySelectorAll('.img_container_label img')[0];
 let less = document.querySelectorAll('.img_container_label img')[1];
@@ -73,16 +117,7 @@ let less = document.querySelectorAll('.img_container_label img')[1];
 let innerPlaceholder = []
 
 for (let i = 1; i < 51; i++) {
-    let ii = i.toString().split('').pop();
-    if (ii === '1') {
-        innerPlaceholder.push(`${i}st`)
-    } else if (ii === '2') {
-        innerPlaceholder.push(`${i}nd`)
-    } else if (ii === '3') {
-        innerPlaceholder.push(`${i}rd`)
-    } else {
-        innerPlaceholder.push(`${i}th`)
-    }
+    if (i === 2) {innerPlaceholder.push(`${i}nd`)} else if (i === 3) {innerPlaceholder.push(`${i}rd`)} else {innerPlaceholder.push(`${i}th`)}
 }
 
 more.addEventListener('click', () => {

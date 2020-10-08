@@ -2,10 +2,19 @@
     margin: 0px;
     padding: 0;
 }
+
+body {
+    background-color: #285f92;
+}
+
 .container_corp {
-    width: 425px;
+    width: 450px;
     height: 450px;
     float: left;
+    border: 4px dashed rgb(76, 230, 230);
+    border-radius: 50px;
+    margin: 50px 50px;
+
 }
 
 .corp {
@@ -14,6 +23,7 @@
 }
 
 .key_pressed {
+    color: whites;
     padding-top: 200px;
     float: left;
 }
@@ -25,7 +35,7 @@
 }
 
 .poutre-droite {
-    border-left: 2px solid #000;
+    border-left: 2px solid rgb(117, 178, 202);
     display: inline-block;
     height: 350px;
     left: 300px;
@@ -33,13 +43,13 @@
     visibility: hidden;
 }
 .poutre {
-    border : 1px solid #000000;
+    border : 1px solid rgb(117, 178, 202);
     width: 300px;
     bottom: 254px;
     visibility: hidden;
 }
 .corde {
-    border-left: 2px solid #000;
+    border-left: 2px solid rgb(117, 178, 202);
     display: inline-block;
     height: 100px;
     left: 105px;
@@ -50,13 +60,13 @@
     width: 40px;
     height: 40px;
     border-radius: 20px;
-    background-color: black;
+    background-color: rgb(117, 178, 202);
     bottom: 265px;
     left: 85px;
     visibility: hidden;
 }
 .corps {
-    border-left: 2px solid #000;
+    border-left: 2px solid rgb(117, 178, 202);
     display: inline-block;
     height: 130px;
     left: 103px;
@@ -64,7 +74,7 @@
     visibility: hidden;
 }
 .bras-droit {
-    border : 1px solid black;
+    border : 1px solid rgb(117, 178, 202);
     transform:rotate(40deg);
     width: 50px;
     bottom: 355px;
@@ -72,7 +82,7 @@
     visibility: hidden;
 }
 .bras-gauche {
-    border : 1px solid black;
+    border : 1px solid rgb(117, 178, 202);
     transform:rotate(140deg);
     width: 50px;
     bottom: 357px;
@@ -80,7 +90,7 @@
     visibility: hidden;
 }
 .jambe-droite {
-    border-left: 2px solid #000;
+    border-left: 2px solid rgb(117, 178, 202);
     transform:rotate(140deg);
     display: inline-block;
     height: 100px;
@@ -89,7 +99,7 @@
     visibility: hidden;
 }
 .jambe-gauche {
-    border-left: 2px solid #000;
+    border-left: 2px solid rgb(117, 178, 202);
     transform:rotate(40deg);
     display: inline-block;
     height: 100px;
@@ -100,6 +110,6 @@
 .case {
     width: 50px;
     height: 50px;
-    border: 1px solid black;
+    border: 1px solid rgb(117, 178, 202);
     left: 100px;
 }
