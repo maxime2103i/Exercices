@@ -66,3 +66,39 @@ const removeAttribute = () => {
 
 
 // ElemzntHTML.closest()
+let x = 0;
+let more = document.querySelectorAll('.img_container_label img')[0];
+let less = document.querySelectorAll('.img_container_label img')[1];
+
+let innerPlaceholder = []
+
+for (let i = 1; i < 51; i++) {
+    let ii = i.toString().split('').pop();
+    if (ii === '1') {
+        innerPlaceholder.push(`${i}st`)
+    } else if (ii === '2') {
+        innerPlaceholder.push(`${i}nd`)
+    } else if (ii === '3') {
+        innerPlaceholder.push(`${i}rd`)
+    } else {
+        innerPlaceholder.push(`${i}th`)
+    }
+}
+
+more.addEventListener('click', () => {
+    let labelClassName = document.querySelector('#class_name').cloneNode(true);
+    x++
+    labelClassName.setAttribute('id', `class_name${x}`)
+    labelClassName.setAttribute('placeholder', `Enter your ${innerPlaceholder[x]} class`)
+    more.parentNode.parentNode.insertBefore(labelClassName, more.parentNode);
+});
+
+less.addEventListener('click', () => {
+    if (x === 0) {
+        return
+    }
+    let labelClassName = document.querySelector(`#class_name${x}`)
+    x--
+    labelClassName.remove()
+});
+console.log();
