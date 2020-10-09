@@ -74,8 +74,9 @@ const removeAttribute = () => {
 
 
 let submit = document.querySelector('#submit')
-
 let inputTag = document.querySelector('#tag_name')
+let optionsParent = document.querySelector('#dropdown')
+
 let mot = []
 
 inputTag.addEventListener('input', (event) => {
@@ -93,47 +94,69 @@ inputTag.addEventListener('input', (event) => {
 
 
 submit.addEventListener('click', (event) => {
-    let inputTagName = document.querySelectorAll('input')
-    let arrayData = []
-    inputTagName.forEach(element => {
-        arrayData.push(element.value)
-        inputTagName.value = ""
-    });
-    let textarea = document.querySelectorAll('textarea')
-    let select = document.querySelector('select')
-    
-
-    console.log(arrayData);
     event.preventDefault();
+    let inputTagName = document.querySelectorAll('.input');
+    let objectData = {}
+    objectData.tagName = inputTagName[0].value;
+    objectData.id = inputTagName[1].value;
+    objectData.class = inputTagName[2].value;
+    objectData.innerHTML = inputTagName[3].value;
+
+   
+    let parentNodeSelection;
+
+    if (inputTagName[4].value.includes(".")) {
+        parentNodeSelection = `.${inputTagName[4].value.split('.')[1]}`
+    } else if (inputTagName[4].value.includes("#")) {
+        parentNodeSelection = `#${inputTagName[4].value.split('#')[1]}`
+    } else {
+        parentNodeSelection = `.${inputTagName[4].value}`
+    }
+    console.log(parentNodeSelection);
+    
+    let parenNode = document.querySelector(parentNodeSelection)
+    parenNode.appendChild(createElemet(objectData))
+
+    let optionClone = document.querySelectorAll('#dropdown option')[1].cloneNode(true)
+    let elementName;
+    if (objectData.class) {
+        elementName = `${objectData.tagName}.${objectData.class}`
+    } else {
+        elementName = `${objectData.tagName}#${objectData.id}`
+    }
+    optionClone.setAttribute('value', elementName);
+    optionClone.innerHTML = elementName;
+    optionsParent.appendChild(optionClone)
+    
 })
 
 
 
 
-let x = 0;
-let more = document.querySelectorAll('.img_container_label img')[0];
-let less = document.querySelectorAll('.img_container_label img')[1];
+// let x = 0;
+// let more = document.querySelectorAll('.img_container_label img')[0];
+// let less = document.querySelectorAll('.img_container_label img')[1];
 
-let innerPlaceholder = []
+// let innerPlaceholder = []
 
-for (let i = 1; i < 51; i++) {
-    if (i === 2) {innerPlaceholder.push(`${i}nd`)} else if (i === 3) {innerPlaceholder.push(`${i}rd`)} else {innerPlaceholder.push(`${i}th`)}
-}
+// for (let i = 1; i < 51; i++) {
+//     if (i === 2) {innerPlaceholder.push(`${i}nd`)} else if (i === 3) {innerPlaceholder.push(`${i}rd`)} else {innerPlaceholder.push(`${i}th`)}
+// }
 
-more.addEventListener('click', () => {
-    let labelClassName = document.querySelector('#class_name').cloneNode(true);
-    x++
-    labelClassName.setAttribute('id', `class_name${x}`)
-    labelClassName.setAttribute('placeholder', `Enter your ${innerPlaceholder[x]} class`)
-    more.parentNode.parentNode.insertBefore(labelClassName, more.parentNode);
-});
+// more.addEventListener('click', () => {
+//     let labelClassName = document.querySelector('#class_name').cloneNode(true);
+//     x++
+//     labelClassName.setAttribute('id', `class_name${x}`)
+//     labelClassName.setAttribute('placeholder', `Enter your ${innerPlaceholder[x]} class`)
+//     more.parentNode.parentNode.insertBefore(labelClassName, more.parentNode);
+// });
 
-less.addEventListener('click', () => {
-    if (x === 0) {
-        return
-    }
-    let labelClassName = document.querySelector(`#class_name${x}`)
-    x--
-    labelClassName.remove()
-});
-console.log();
+// less.addEventListener('click', () => {
+//     if (x === 0) {
+//         return
+//     }
+//     let labelClassName = document.querySelector(`#class_name${x}`)
+//     x--
+//     labelClassName.remove()
+// });
+// console.log();

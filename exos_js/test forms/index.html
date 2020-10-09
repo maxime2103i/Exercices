@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="css/style.css" rel="stylesheet">
+    <title>Make HTML</title>
 </head>
 
 <body>
-    <link href="css/style.css" rel="stylesheet">
 
     <div id="main-container">
 
@@ -17,42 +17,39 @@
             <!-- tag name -->
             <div class="question-container">
                 <label id="Tag-name-label" class="question-label" for="name">Tag name:</label>
-                <input id="tag_name" class="row-input" type="text" placeholder="Enter your tag name" min="0" max="40"
+                <input id="tag_name" class="row-input input" type="text" placeholder="Enter your tag name" min="0" max="40"
                     required>
             </div>
 
             <!-- id name -->
             <div class="question-container">
                 <label id="number-label" class="question-label" for="text">Set an id:</label>
-                <input id="number" class="row-input" type="text" placeholder="Enter your ID" min="0" max="40">
+                <input id="number" class="row-input input" type="text" placeholder="Enter your ID" min="0" max="40">
             </div>
 
             <!-- class name -->
             <div class="question-container">
                 <label id="Class-name-label" class="question-label" for="className">Class name:</label>
-                <input id="class_name" class="row-input" type="text" placeholder="Enter your class" min="0" max="40">
-                <div class="img_container_label">
+                <input id="class_name" class="row-input input" type="text" placeholder="Enter your class" min="0" max="40">
+                <!-- <div class="img_container_label">
                     <img src="more.png" alt="">
                     <img src="less.png " alt="">
-                </div>
+                </div> -->
             </div>
 
             <!-- content text -->
             <div class="question-container">
                 <label class="question-label" for="content">Add content:</label>
-                <textarea id="content" class="big-size-input"
+                <textarea id="content" class="big-size-input input"
                     placeholder="Enter content of your element here..."></textarea>
             </div>
 
             <!-- Parent element -->
             <div class="question-container">
                 <label class="question-label" for="dropdown">Parent element selection:</label>
-                <select id="dropdown" class="row-input" required>
+                <select id="dropdown" class="row-input input" required>
                     <option disabled selected>Select a parent</option>
                     <option value="master">master</option>
-                    <option value="div.container">div.container</option>
-                    <option value="div.networks">div.networks</option>
-                    <option value="a.facebook">a.facebook</option>
                 </select>
             </div>
 

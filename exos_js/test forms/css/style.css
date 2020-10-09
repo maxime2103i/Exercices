@@ -10,6 +10,16 @@
 body {
     background: #f5f5f5;
 }
+
+.master > * {
+    border: solid 1px blue;
+    margin: 5px;
+}
+.master > * > * {
+    border: solid 1px blue;
+    margin: 5px;
+}
+
 #main-container {
     max-width: 300px;
     float: left;
