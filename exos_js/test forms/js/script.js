@@ -35,6 +35,64 @@ const createElemet = (attributObjetc) => {
 };
 
 
+const element__html = class {
+    constructor(tagName, attributs, childs) {
+        this.tagName = tagName
+        for (const key in attributs) {
+            this[attributs[key][0]] = attributs[key][1]
+        }
+        if (childs[0]) {
+            this.childs = []
+            childs.forEach(element => {
+                if (element[0][2]) {
+                    this.childs.push(new element__html(element[0][0], element[0][1], element[0][2]))
+                } else if (element[0][1]) {
+                    this.childs.push(new element__html(element[0][0], element[0][1]))
+                } else {
+                    this.childs.push(new element__html(element[0][0]))
+                }
+            });
+            
+        }
+    }
+
+    create_elemet() {
+        let element;
+
+        if (this['tagName']) {
+            for (const key in this) {
+                console.log(key);
+                if (key === "tagName") {
+                    element = document.createElement(this.tagName);
+                } else if (key === "innerHTML") {
+                    element.innerHTML += this[key];
+                } else if (key === "innerTEXT") {
+                    this[key].forEach(textOrObj => {
+                        if (typeof textOrObj === "object") {
+                            element.appendChild(new element__html(textOrObj.tagName, textOrObj.attributs).create_elemet());
+                        } else {
+                            element.innerHTML += textOrObj;
+                        };
+                    });
+                } else if (key === "childs") {
+                    element.appendChild(this.childs.create_elemet());
+                } else if (key === "clone") {
+
+                } else {
+                    element.setAttribute(key, this[key]);
+                };
+            };
+        } else {
+            console.log(false);
+            return false;
+        };
+        return element;
+    }
+}
+
+const jsp = new element__html("div", [["class", "nomDeLaClass"], ["innerTEXT", ["ddd",  {"tagName":"a", "href": "C:/Users/maxim/Documents/GitHub/Exercices/exos_js/test forms/css/style.css"}, "d$qmsld"]], ["sasa", "salut"]], ["div", [["class", "nomDeLaClass"], ["href", "C:/Users/maxim/Documents/GitHub/Exercices/exos_js/test forms/index.html"], ["sasa", "salut"]]])
+
+console.log(jsp.create_elemet());
 
 
 const addAttribute = () => {
@@ -131,32 +189,62 @@ submit.addEventListener('click', (event) => {
 })
 
 
+                  ////////////////////////
+                 // class plus poussée //
+                ////////////////////////    
 
 
-// let x = 0;
-// let more = document.querySelectorAll('.img_container_label img')[0];
-// let less = document.querySelectorAll('.img_container_label img')[1];
-
-// let innerPlaceholder = []
-
-// for (let i = 1; i < 51; i++) {
-//     if (i === 2) {innerPlaceholder.push(`${i}nd`)} else if (i === 3) {innerPlaceholder.push(`${i}rd`)} else {innerPlaceholder.push(`${i}th`)}
-// }
-
-// more.addEventListener('click', () => {
-//     let labelClassName = document.querySelector('#class_name').cloneNode(true);
-//     x++
-//     labelClassName.setAttribute('id', `class_name${x}`)
-//     labelClassName.setAttribute('placeholder', `Enter your ${innerPlaceholder[x]} class`)
-//     more.parentNode.parentNode.insertBefore(labelClassName, more.parentNode);
-// });
-
-// less.addEventListener('click', () => {
-//     if (x === 0) {
-//         return
+// const element__html = class {
+//     constructor(tagName, attributs, childs) {
+//         this.tagName = tagName
+//         for (const key in attributs) {
+//             this[attributs[key][0]] = attributs[key][1]
+//         }
+//         if (childs[0]) {
+//             this.childs = []
+//             childs.forEach(element => {
+//                 if (element[0][2]) {
+//                     this.childs.push(new element__html(element[0][0], element[0][1], element[0][2]))
+//                 } else if (element[0][1]) {
+//                     this.childs.push(new element__html(element[0][0], element[0][1]))
+//                 } else {
+//                     this.childs.push(new element__html(element[0][0]))
+//                 }
+//             });
+            
+//         }
 //     }
-//     let labelClassName = document.querySelector(`#class_name${x}`)
-//     x--
-//     labelClassName.remove()
-// });
-// console.log();
+
+//     create_elemet() {
+//         let element;
+
+//         if (this['tagName']) {
+//             for (const key in this) {
+//                 console.log(key);
+//                 if (key === "tagName") {
+//                     element = document.createElement(this.tagName);
+//                 } else if (key === "innerHTML") {
+//                     element.innerHTML += this[key];
+//                 } else if (key === "innerTEXT") {
+//                     this[key].forEach(textOrObj => {
+//                         if (typeof textOrObj === "object") {
+//                             element.appendChild(new element__html(textOrObj.tagName, textOrObj.attributs).create_elemet());
+//                         } else {
+//                             element.innerHTML += textOrObj;
+//                         };
+//                     });
+//                 } else if (key === "childs") {
+//                     element.appendChild(this.childs.create_elemet());
+//                 } else if (key === "clone") {
+
+//                 } else {
+//                     element.setAttribute(key, this[key]);
+//                 };
+//             };
+//         } else {
+//             console.log(false);
+//             return false;
+//         };
+//         return element;
+//     }
+// }
